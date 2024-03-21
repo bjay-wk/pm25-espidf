@@ -4,18 +4,24 @@ This library is an adatation of [Adafruit PM2.5 Air Quality sensor](https://gith
 
 This library for espidf works with [PM2.5 Air Quality Module](https://shop.m5stack.com/products/pm2-5-air-quality-kit) from M5stack.
 
-## Installation
+## How to Add to you project
+### Using platformio
 
-```sh
-    mkdir components
-    cd components
-    git submodule add <gitrepo>
-```
-then in idf_component_register in the file CMakeLists.txt you will add
+- Add `https://github.com/bjay-wk/pm25-espidf.git` to the `lib_deps`in `platformio.ini`.
 
+### Using Espidf
+In `src/idf_component.yml` of your project add
+
+```yaml
+pm25-espidf:
+  git: https://github.com/bjay-wk/pm25-espidf.git
 ```
-idf_component_register(
+
+And in `src/CMakeLists.txt` of your project
+
+```make
+idf_component_register(...
+    REQUIRES pm25-espidf
     ...
-    REQUIRES pm25
 )
 ```
